@@ -4,3 +4,4 @@ cloudscraper
 requests
 tqdm
 rich
+flask-cors

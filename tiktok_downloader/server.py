@@ -12,6 +12,7 @@ from .utils import info_videotiktok
 import json
 import os
 
+from flask_cors import CORS
 
 app = Flask(
     __name__,
@@ -19,6 +20,7 @@ app = Flask(
     static_folder=os.path.abspath(__file__+'/../static')
 )
 
+cors = CORS(app, resources={r"/auto": {"origins": "*"}})
 
 @app.route('/')
 def index():
@@ -63,7 +65,7 @@ def auto():
                                 }, b)),
                             indent=4
                         ),
-                        content_type='application/json'
+                        content_type='application/json',
                     )
             except Exception as e:
                 return Response(
